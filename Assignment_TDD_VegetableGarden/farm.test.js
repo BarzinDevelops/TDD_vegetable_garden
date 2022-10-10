@@ -1,3 +1,6 @@
+const log = console.log // own preference for short command of console.log()
+// ----------------------------------------------------------------------------//
+
 const { getYieldForPlant, getYieldForCrop, getTotalYield } = require("./farm");
 
 describe("getYieldForPlant", () => {
@@ -5,9 +8,16 @@ describe("getYieldForPlant", () => {
         name: "corn",
         yield: 30,
     };
+    const carrot = {
+        name: "carrot",
+        yield: 14,
+    };
 
     test("Get yield for plant with no environment factors", () => {
+        log(`getYieldForPlant(corn)).toBe(30) => ${getYieldForPlant(corn)}`)
         expect(getYieldForPlant(corn)).toBe(30);
+        log(`getYieldForPlant(carrot)).toBe(14) => ${getYieldForPlant(carrot)}`)
+        expect(getYieldForPlant(carrot)).toBe(14);
     });
 });
 
