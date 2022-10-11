@@ -14,14 +14,14 @@ describe("getYieldForPlant", () => {
     };
 
     test("Get yield for plant with no environment factors", () => {
-        log(`getYieldForPlant(corn)).toBe(30) => ${getYieldForPlant(corn)}`)
+        // log(`getYieldForPlant(corn)).toBe(30) => ${getYieldForPlant(corn)}`)
         expect(getYieldForPlant(corn)).toBe(30);
-        log(`getYieldForPlant(carrot)).toBe(14) => ${getYieldForPlant(carrot)}`)
+        // log(`getYieldForPlant(carrot)).toBe(14) => ${getYieldForPlant(carrot)}`)
         expect(getYieldForPlant(carrot)).toBe(14);
     });
 });
 
-/* describe("getYieldForCrop", () => {
+describe("getYieldForCrop", () => {
     test("Get yield for crop, simple", () => {
         const corn = {
             name: "corn",
@@ -31,9 +31,10 @@ describe("getYieldForPlant", () => {
             crop: corn,
             numCrops: 10,
         };
+        log(`getYieldForCrop(input)).toBe(30) => ${getYieldForCrop(input)}`)
         expect(getYieldForCrop(input)).toBe(30);
     });
-}); */
+});
 
 /* describe("getTotalYield", () => {
     test("Calculate total yield with multiple crops", () => {
