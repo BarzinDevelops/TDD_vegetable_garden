@@ -36,7 +36,7 @@ describe("getYieldForCrop", () => {
     });
 });
 
-/* describe("getTotalYield", () => {
+describe("getTotalYield", () => {
     test("Calculate total yield with multiple crops", () => {
         const corn = {
             name: "corn",
@@ -61,4 +61,6 @@ describe("getYieldForCrop", () => {
         const crops = [{ crop: corn, numCrops: 0 }];
         expect(getTotalYield({ crops })).toBe(0);
     });
-}); */
+});
+
+
