@@ -101,5 +101,16 @@ describe("getCostsForCrop", () => {
         ];
         expect(getCostsForCrop({crops})).toBe(21.03);
     });
+    test("Calculate the cost of different crops with price set to null.", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            price: null
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+        ];
+        expect(getCostsForCrop({crops})).toBe(0);
+    });
     
 });
