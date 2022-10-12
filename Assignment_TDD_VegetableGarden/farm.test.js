@@ -13,10 +13,10 @@ const { getYieldForPlant, getYieldForCrop, getTotalYield } = require("./farm");
         yield: 14,
     };
 
-    test("Get yield for plant with no environment factors", () => {
-        // log(`getYieldForPlant(corn)).toBe(30) => ${getYieldForPlant(corn)}`)
+    test("Get yield for plant (Corn) with no environment factors", () => {
         expect(getYieldForPlant(corn)).toBe(30);
-        // log(`getYieldForPlant(carrot)).toBe(14) => ${getYieldForPlant(carrot)}`)
+    });
+    test("Get yield for plant (Carrot) with no environment factors", () => {
         expect(getYieldForPlant(carrot)).toBe(14);
     });
 });
@@ -31,10 +31,9 @@ describe("getYieldForCrop", () => {
             crop: corn,
             numCrops: 10,
         };
-        log(`getYieldForCrop(input)).toBe(30) => ${getYieldForCrop(input)}`)
         expect(getYieldForCrop(input)).toBe(30);
     });
-}); */
+});
 
 describe("getTotalYield", () => {
     test("Calculate total yield with multiple crops", () => {
@@ -64,3 +63,19 @@ describe("getTotalYield", () => {
 });
 
 
+ */
+
+// 1. calculate the cost for a crop: getCostsForCrop.
+describe("getCostsForCrop", () => {
+    test("Calculate the cost of crop.", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            price: 0.80
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+        ];
+        expect(getCostsForCrop({crops})).toBe(3);
+    });
+});
