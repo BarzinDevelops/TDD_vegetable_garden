@@ -1,9 +1,9 @@
 const log = console.log // own preference for short command of console.log()
 // ----------------------------------------------------------------------------//
 
-const { getYieldForPlant, getYieldForCrop, getTotalYield } = require("./farm");
+const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop } = require("./farm");
 
-/* describe("getYieldForPlant", () => {
+describe("getYieldForPlant", () => {
     const corn = {
         name: "corn",
         yield: 30,
@@ -63,7 +63,7 @@ describe("getTotalYield", () => {
 });
 
 
- */
+
 
 // 1. calculate the cost for a crop: getCostsForCrop.
 describe("getCostsForCrop", () => {
@@ -76,6 +76,6 @@ describe("getCostsForCrop", () => {
         const crops = [
             { crop: corn, numCrops: 5 },
         ];
-        expect(getCostsForCrop({crops})).toBe(3);
+        expect(getCostsForCrop({crops})).toBe(12);
     });
 });
