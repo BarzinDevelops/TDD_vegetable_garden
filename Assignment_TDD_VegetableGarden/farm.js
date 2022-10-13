@@ -20,9 +20,25 @@ const getCostsForCrop = (toCalCrop) => {
     return totCostCrops;
 }
 
+const getRevenueForCrop = (cropsObj) => {
+    let totalRevenue = 0;
+    const cropArr = cropsObj.crops
+    log(`cropArr`,cropArr);
+    cropArr.forEach(obj => {
+        const salePrice = obj.crop.salePrice;
+        log(`salePrice`,salePrice);
+        const totalYield = getYieldForCrop(obj);
+        log(`totalYield`,totalYield);
+        totalRevenue += totalYield * salePrice;
+        log(`totalRevenue`,totalRevenue);
+    });
+    return totalRevenue;
+};
+
 module.exports = {
     getYieldForPlant,
     getYieldForCrop,
     getTotalYield,
     getCostsForCrop,
+    getRevenueForCrop,
 }

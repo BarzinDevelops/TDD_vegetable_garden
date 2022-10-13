@@ -1,7 +1,12 @@
 const log = console.log // own preference for short command of console.log()
 // ----------------------------------------------------------------------------//
 
-const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop } = require("./farm");
+const { getYieldForPlant, 
+        getYieldForCrop, 
+        getTotalYield, 
+        getCostsForCrop, 
+        getRevenueForCrop,
+} = require("./farm");
 
 describe("getYieldForPlant", () => {
     const corn = {
@@ -62,11 +67,8 @@ describe("getTotalYield", () => {
     });
 });
 
-
-
-
 // 1. calculate the cost for a crop: getCostsForCrop.
-/* describe("getCostsForCrop", () => {
+describe("getCostsForCrop", () => {
     test("Calculate the cost of crop.", () => {
         const corn = {
             name: "corn",
@@ -112,7 +114,7 @@ describe("getTotalYield", () => {
         ];
         expect(getCostsForCrop({crops})).toBe(0);
     });
-}); */
+});
 
 // 2. calculate the revenue for a crop (without environmental factors): 
 describe("getRevenueForCrop", () => {
@@ -126,7 +128,7 @@ describe("getRevenueForCrop", () => {
         const crops = [
             { crop: corn, numCrops: 5 },
         ];
-        expect(getRevenueForCrop({crops})).toBe(12);
+        expect(getRevenueForCrop({crops})).toBe(16.50);
     });
   /*   test("Calculate the cost of different crops.", () => {
         const corn = {
