@@ -14,11 +14,8 @@ const getCostsForCrop = (toCalCrop) => {
     totCostCrops = 0;
     toCalCrop.crops.forEach(cropObject => {
         const totalYield = getYieldForCrop(cropObject);
-        const pricePlant = cropObject.crop.price;
-        // log(`This is total yield: => ${totalYield}`)
-        // log(`This should be price of plant: => ${pricePlant}`)
-        // log(`This is cost of crop ${cropObject.crop.name}: => ${pricePlant * totalYield}`);
-        totCostCrops += pricePlant * totalYield
+        const costPlant = cropObject.crop.cost;
+        totCostCrops += costPlant * totalYield
     });
     return totCostCrops;
 }

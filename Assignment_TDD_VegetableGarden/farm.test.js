@@ -71,7 +71,7 @@ describe("getCostsForCrop", () => {
         const corn = {
             name: "corn",
             yield: 3,
-            price: 0.80
+            cost: 0.80
         };
         const crops = [
             { crop: corn, numCrops: 5 },
@@ -82,17 +82,17 @@ describe("getCostsForCrop", () => {
         const corn = {
             name: "corn",
             yield: 3,
-            price: 0.80
+            cost: 0.80
         };
         const peas = {
             name: "Peas",
             yield: 2,
-            price: 1.12
+            cost: 1.12
         };
         const lettuce = {
             name: "Lettuce",
             yield: 1,
-            price: 0.65
+            cost: 0.65
         };
         const crops = [
             { crop: corn, numCrops: 5 },
@@ -105,12 +105,64 @@ describe("getCostsForCrop", () => {
         const corn = {
             name: "corn",
             yield: 3,
-            price: null
+            cost: null
         };
         const crops = [
             { crop: corn, numCrops: 5 },
         ];
         expect(getCostsForCrop({crops})).toBe(0);
     });
-    
 });
+
+// 2. calculate the revenue for a crop (without environmental factors): 
+//    getRevenueForCrop.
+// describe("getRevenueForCrop", () => {
+//     test("Calculate the cost of crop.", () => {
+//         const corn = {
+//             name: "corn",
+//             yield: 3,
+//             cost: 0.80,
+//             salePrice: 1.10
+//         };
+//         const crops = [
+//             { crop: corn, numCrops: 5 },
+//         ];
+//         expect(getRevenueForCrop({crops})).toBe(12);
+//     });
+    // test("Calculate the cost of different crops.", () => {
+    //     const corn = {
+    //         name: "corn",
+    //         yield: 3,
+    //         price: 0.80
+    //     };
+    //     const peas = {
+    //         name: "Peas",
+    //         yield: 2,
+    //         price: 1.12
+    //     };
+    //     const lettuce = {
+    //         name: "Lettuce",
+    //         yield: 1,
+    //         price: 0.65
+    //     };
+    //     const crops = [
+    //         { crop: corn, numCrops: 5 },
+    //         { crop: peas, numCrops: 2 },
+    //         { crop: lettuce, numCrops: 7 },
+    //     ];
+    //     expect(getCostsForCrop({crops})).toBe(21.03);
+    // });
+    // test("Calculate the cost of different crops with price set to null.", () => {
+    //     const corn = {
+    //         name: "corn",
+    //         yield: 3,
+    //         price: null
+    //     };
+    //     const crops = [
+    //         { crop: corn, numCrops: 5 },
+    //     ];
+    //     expect(getCostsForCrop({crops})).toBe(0);
+    // });
+    
+// });
+
