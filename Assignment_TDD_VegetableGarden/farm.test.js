@@ -1,5 +1,10 @@
 const log = console.log // own preference for short command of console.log()
+//this also stops someone scrolling back and viewing sensitive data that may have been logged
+process.stdout.write("\u001b[3J\u001b[2J\u001b[1J");
+console.clear();
 // ----------------------------------------------------------------------------//
+
+
 
 const { getYieldForPlant, 
         getYieldForCrop, 
@@ -130,40 +135,20 @@ describe("getRevenueForCrop", () => {
         ];
         expect(getRevenueForCrop({crops})).toBe(16.50);
     });
-  /*   test("Calculate the cost of different crops.", () => {
+    test("calculate the revenue with 'null' costs and saleprice (without environmental factors).", () => {
         const corn = {
             name: "corn",
             yield: 3,
-            price: 0.80
-        };
-        const peas = {
-            name: "Peas",
-            yield: 2,
-            price: 1.12
-        };
-        const lettuce = {
-            name: "Lettuce",
-            yield: 1,
-            price: 0.65
+            cost: null,
+            salePrice: null
         };
         const crops = [
             { crop: corn, numCrops: 5 },
-            { crop: peas, numCrops: 2 },
-            { crop: lettuce, numCrops: 7 },
         ];
-        expect(getCostsForCrop({crops})).toBe(21.03);
+        log(`getRevenueForCrop({crops})).toBe(0) => ${getRevenueForCrop({crops})}`);
+        expect(getRevenueForCrop({crops})).toBe(0);
     });
-    test("Calculate the cost of different crops with price set to null.", () => {
-        const corn = {
-            name: "corn",
-            yield: 3,
-            price: null
-        };
-        const crops = [
-            { crop: corn, numCrops: 5 },
-        ];
-        expect(getCostsForCrop({crops})).toBe(0);
-    }); */
-    
+     
+
 });
 
