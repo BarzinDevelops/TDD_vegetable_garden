@@ -75,7 +75,7 @@ describe("getTotalYield", () => {
 
 // 1. calculate the cost for a crop: getCostsForCrop.
 describe("getCostsForCrop", () => {
-    test("Calculate the cost of crop.", () => {
+    test("Calculate the cost of one crop species.", () => {
         const corn = {
             name: "corn",
             yield: 3,
@@ -86,30 +86,7 @@ describe("getCostsForCrop", () => {
         ];
         expect(getCostsForCrop({crops})).toBe(12);
     });
-   /*  test("Calculate the cost of different crops.", () => {
-        const corn = {
-            name: "corn",
-            yield: 3,
-            cost: 0.80
-        };
-        const peas = {
-            name: "Peas",
-            yield: 2,
-            cost: 1.12
-        };
-        const lettuce = {
-            name: "Lettuce",
-            yield: 1,
-            cost: 0.65
-        };
-        const crops = [
-            { crop: corn, numCrops: 5 },
-            { crop: peas, numCrops: 2 },
-            { crop: lettuce, numCrops: 7 },
-        ];
-        expect(getCostsForCrop({crops})).toBe(21.03);
-    });
-    test("Calculate the cost of different crops with price set to null.", () => {
+    test("Calculate the cost of one crop species with cost set to null.", () => {
         const corn = {
             name: "corn",
             yield: 3,
@@ -119,7 +96,7 @@ describe("getCostsForCrop", () => {
             { crop: corn, numCrops: 5 },
         ];
         expect(getCostsForCrop({crops})).toBe(0);
-    }); */
+    });
 });
 
 // 2. calculate the revenue for a crop (without environmental factors): 
