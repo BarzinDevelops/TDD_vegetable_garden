@@ -148,7 +148,7 @@ describe("getProfitForCrop", ()=>{
             salePrice: 1.10,
           };
         const crops = [ { crop: corn, numCrops: 0 } ];
-        expect(getProfitForCrop({crops})).toBe(5.28)
+        expect(getProfitForCrop({crops})).toBe(0)
     });
 });
 
