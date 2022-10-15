@@ -137,11 +137,18 @@ describe("getProfitForCrop", ()=>{
             cost: 0.80,
             salePrice: 1.10,
           };
-        const crops = [
-          { crop: corn, numCrops: 2 },   //(2x3= 6 * )
-        ];
-        
-          expect(getProfitForCrop({crops})).toBe(1.80)
-        });
+        const crops = [ { crop: corn, numCrops: 2 } ];
+        expect(getProfitForCrop({crops})).toBe(5.80)
+    });
+    // test(`Testing profit for one crop with no crops amount (without environmental factors)`, ()=>{
+    //     const corn = {
+    //         "name": "corn", 
+    //         yield: 3,
+    //         cost: 0.80,
+    //         salePrice: 1.10,
+    //       };
+    //     const crops = [ { crop: corn, numCrops: 0 } ];
+    //     expect(getProfitForCrop({crops})).toBe(5.28)
+    // });
 });
 

@@ -24,12 +24,10 @@ const getRevenueForCrop = (cropsObj) => {
 };
 
 const getProfitForCrop = (cropsObj) =>{
-    // log(`cropsObj => `, cropsObj)
-    // log(`cropsObj.crops => `, cropsObj.crops)
-    // log(`cropsObj.crops[0] => `, cropsObj.crops[0])
-    // log(`cropsObj.crops[0].crop => `, cropsObj.crops[0].crop)
-    // log(`cropsObj.crops[0].crop.cost => `, cropsObj.crops[0].crop.cost)
-
+    const cropRevenue = getRevenueForCrop(cropsObj);
+    const cropCost = cropsObj.crops[0].crop.cost;
+    const profitForCrop = parseFloat((cropRevenue - cropCost).toFixed(2));
+    return profitForCrop;
 }
 
 
