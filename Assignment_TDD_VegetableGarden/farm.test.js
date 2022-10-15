@@ -11,7 +11,7 @@ const { getYieldForPlant,
         getTotalYield, 
         getCostsForCrop, 
         getRevenueForCrop,
-        getProfitForCrop
+        getProfitForCrop,
 } = require("./farm");
 
 describe("getYieldForPlant", () => {
@@ -86,7 +86,7 @@ describe("getCostsForCrop", () => {
         ];
         expect(getCostsForCrop({crops})).toBe(12);
     });
-    test("Calculate the cost of different crops.", () => {
+   /*  test("Calculate the cost of different crops.", () => {
         const corn = {
             name: "corn",
             yield: 3,
@@ -119,11 +119,11 @@ describe("getCostsForCrop", () => {
             { crop: corn, numCrops: 5 },
         ];
         expect(getCostsForCrop({crops})).toBe(0);
-    });
+    }); */
 });
 
 // 2. calculate the revenue for a crop (without environmental factors): 
-describe("getRevenueForCrop", () => {
+/* describe("getRevenueForCrop", () => {
     test("calculate the revenue for a crop (without environmental factors).", () => {
         const corn = {
             name: "corn",
@@ -146,25 +146,36 @@ describe("getRevenueForCrop", () => {
         const crops = [
             { crop: corn, numCrops: 5 },
         ];
-        log(`getRevenueForCrop({crops})).toBe(0) => ${getRevenueForCrop({crops})}`);
         expect(getRevenueForCrop({crops})).toBe(0);
     });
-});
+}); */
 
 // 3. calculate the profit for a crop (without environmental factors). Calculation-> (revenue - cost)
-describe("getProfitForCrop", ()=>{
+/* describe("getProfitForCrop", ()=>{
     test(`Testing profit for one crop (without environmental factors)`, ()=>{
         const corn = {
-          "name": "corn", 
-          yield: 3,
-          cost: 0.80,
-          salePrice: 1.10,
+            "name": "corn", 
+            yield: 3,
+            cost: 0.80,
+            salePrice: 1.10,
           };
+        const peas = {
+            name: "Peas",
+            yield: 2,
+            cost: 1.12
+        };
+        const lettuce = {
+            name: "Lettuce",
+            yield: 1,
+            cost: 0.65
+        };
         const crops = [
-          { crop: corn, numCrops: 2 }
+          { crop: corn, numCrops: 2 },   //(2x3= 6 * )
+          { crop: peas, numCrops: 2 },
+          { crop: lettuce, numCrops: 2 },
         ];
         
           expect(getProfitForCrop({crops})).toBe(1.80)
         });
-});
+}); */
 
