@@ -11,6 +11,7 @@ const { getYieldForPlant,
         getTotalYield, 
         getCostsForCrop, 
         getRevenueForCrop,
+        getProfitForCrop
 } = require("./farm");
 
 describe("getYieldForPlant", () => {
@@ -148,7 +149,22 @@ describe("getRevenueForCrop", () => {
         log(`getRevenueForCrop({crops})).toBe(0) => ${getRevenueForCrop({crops})}`);
         expect(getRevenueForCrop({crops})).toBe(0);
     });
-     
+});
 
+// 3. calculate the profit for a crop (without environmental factors). Calculation-> (revenue - cost)
+describe("getProfitForCrop", ()=>{
+    test(`Testing profit for one crop (without environmental factors)`, ()=>{
+        const corn = {
+          "name": "corn", 
+          yield: 3,
+          cost: 0.80,
+          salePrice: 1.10,
+          };
+        const crops = [
+          { crop: corn, numCrops: 2 }
+        ];
+        
+          expect(getProfitForCrop({crops})).toBe(1.80)
+        });
 });
 
