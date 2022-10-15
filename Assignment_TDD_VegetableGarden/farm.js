@@ -23,19 +23,13 @@ const getRevenueForCrop = (cropsObj) => {
     return salePrice * getYieldForCrop(singleCropObj);
 };
 
-const getProfitForCrop = (cropsObj2) =>{
-    // get array of crop objects:
-    const cropArr = cropsObj2.crops;
-    // get total crop revenue (sale price of total crop)
-    const totalCropRevenue = getRevenueForCrop(cropsObj2);
-    log(`totalCropRevenue`, totalCropRevenue);
-    // get total crop costs:
-    const totalCropCost = getCostsForCrop(cropsObj2);
-    log(`totalCropCost`, totalCropCost); 
-    const totalCropProfit = totalCropRevenue - totalCropCost;
-    // log(`totalCropProfit`, totalCropProfit); 
-    log(`totalCropProfit`, totalCropProfit.toFixed(2)); 
-    // return totalCropRevenue - totalCropCost;
+const getProfitForCrop = (cropsObj) =>{
+    // log(`cropsObj => `, cropsObj)
+    // log(`cropsObj.crops => `, cropsObj.crops)
+    // log(`cropsObj.crops[0] => `, cropsObj.crops[0])
+    // log(`cropsObj.crops[0].crop => `, cropsObj.crops[0].crop)
+    // log(`cropsObj.crops[0].crop.cost => `, cropsObj.crops[0].crop.cost)
+
 }
 
 
