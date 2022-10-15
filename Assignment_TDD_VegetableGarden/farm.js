@@ -23,14 +23,10 @@ const getCostsForCrop = (toCalCrop) => {
 const getRevenueForCrop = (cropsObj) => {
     let totalRevenue = 0;
     const cropArr = cropsObj.crops
-    // log(`cropArr`,cropArr);
     cropArr.forEach(obj => {
-        const salePrice = obj.crop.salePrice;
-        // log(`salePrice`,salePrice);                  
-        const totalYield = getYieldForCrop(obj);
-        // log(`totalYield`,totalYield);              
+        const salePrice = obj.crop.salePrice;               
+        const totalYield = getYieldForCrop(obj);         
         totalRevenue += totalYield * salePrice;
-        // log(`totalRevenue`,totalRevenue);
     });
     return totalRevenue;
 };
