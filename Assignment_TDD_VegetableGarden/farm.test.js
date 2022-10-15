@@ -113,17 +113,17 @@ describe("getRevenueForCrop", () => {
         ];
         expect(getRevenueForCrop({crops})).toBe(16.50);
     });
-    test("calculate the revenue with 'null' costs and saleprice (without environmental factors).", () => {
+    test("calculate the revenue with 'null' saleprice and 0 yield (without environmental factors).", () => {
         const corn = {
             name: "corn",
-            yield: 3,
-            cost: null,
+            yield: 0,
+            cost: 0.80,
             salePrice: null
         };
         const crops = [
             { crop: corn, numCrops: 5 },
         ];
-        expect(getRevenueForCrop({crops})).toBe(0);
+        expect(getRevenueForCrop({crops})).toEqual(0);
     });
 });
 

@@ -17,15 +17,10 @@ const getCostsForCrop = (cropsObj) => {
     const costPlant = cropsObj.crops[0].crop.cost; // cost of one plant species
     return costPlant * getYieldForCrop(singleCropObj);
 }
-
 const getRevenueForCrop = (cropsObj) => {
-    let totalCropsRevenue = 0;
-    cropsObj.crops.forEach(obj => {
-        const salePrice = obj.crop.salePrice;               
-        const totalYield = getYieldForCrop(obj);         
-        totalCropsRevenue += totalYield * salePrice;
-    });
-    return totalCropsRevenue;  // revenue of all crops together
+    const singleCropObj = cropsObj.crops[0] //getting one crop object
+    const salePrice = cropsObj.crops[0].crop.salePrice; // salePrice of one plant species
+    return salePrice * getYieldForCrop(singleCropObj);
 };
 
 const getProfitForCrop = (cropsObj2) =>{

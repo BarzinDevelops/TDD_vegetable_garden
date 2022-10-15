@@ -1,5 +1,9 @@
 
-
+/*  log(`cropsObj => `, cropsObj)
+    log(`cropsObj.crops => `, cropsObj.crops)
+    log(`cropsObj.crops[0] => `, cropsObj.crops[0])
+    log(`cropsObj.crops[0].crop => `, cropsObj.crops[0].crop)
+    log(`cropsObj.crops[0].crop.cost => `, cropsObj.crops[0].crop.cost) */
 
 
 // getYieldForPlant(plant) => the yield value of that plant
@@ -17,4 +21,10 @@
 // "factor" in this context is an environmental factor that influences the yield.
 
 
-//  calculate the revenue for a crop (without environmental factors): getRevenueForCrop
+/* How to calculate Revenue:
+    Each plant has a "sale price". That is how many euros you earn with one kilo of fruit or vegetables from that plant.
+    If apples have a sale price of 2 euros and we sell 5 kilos of apples, then the revenue is 10 euros. 
+
+    formula for calculating revenu of one crop species:
+    saleprice * 
+*/
