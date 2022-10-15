@@ -28,3 +28,22 @@
     formula for calculating revenu of one crop species:
     saleprice * 
 */
+
+
+
+
+    // log('revenue corn = salesPrice * totalYield ->', 1.10 * 18)
+    // log('costs corn = salesPrice * totalYield ->', 0.80 * 18)
+    // log('revenue pumpkin = salesPrice * totalYield ->', 1.65 * 8)
+    // log('costs pumpkin = salesPrice * totalYield ->', 1 * 8)
+    // log('revenue carrot = salesPrice * totalYield ->',0.75 * 15)
+    // log('costs carrot = salesPrice * totalYield ->',0.40 * 15) 
+    log('===================================================') 
+    // const profitCorn = (1.10 * 18)-( 0.80 * 18)
+    // const profitPumpkin =(1.65 * 8)-( 1 * 8)
+    // const profitCarrot = (0.75 * 15)-(0.40 * 15)
+    // const totalProfitAllCrops = profitCorn + profitPumpkin + profitCarrot
+    // log('total profit corn = revenue - costs ->',(1.10 * 18)-( 0.80 * 18))
+    // log('total profit pumpkin = revenue - costs ->',((1.65 * 8)-( 1 * 8)).toFixed(2))
+    // log('total profit carrot = revenue - costs ->',(0.75 * 15)-(0.40 * 15))
+    // log('totalProfitAllCrops ->',totalProfitAllCrops)
