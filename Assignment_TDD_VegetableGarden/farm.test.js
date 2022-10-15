@@ -86,7 +86,7 @@ describe("getCostsForCrop", () => {
         ];
         expect(getCostsForCrop({crops})).toBe(12);
     });
-    test("Calculate the cost of one crop species with cost set to null.", () => {
+    test("Testing the cost of one crop when crop cost is set to null.", () => {
         const corn = {
             name: "corn",
             yield: 3,
@@ -100,7 +100,7 @@ describe("getCostsForCrop", () => {
 });
 
 // 2. calculate the revenue for a crop (without environmental factors): 
-/* describe("getRevenueForCrop", () => {
+describe("getRevenueForCrop", () => {
     test("calculate the revenue for a crop (without environmental factors).", () => {
         const corn = {
             name: "corn",
@@ -125,7 +125,7 @@ describe("getCostsForCrop", () => {
         ];
         expect(getRevenueForCrop({crops})).toBe(0);
     });
-}); */
+});
 
 // 3. calculate the profit for a crop (without environmental factors). Calculation-> (revenue - cost)
 /* describe("getProfitForCrop", ()=>{
