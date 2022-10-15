@@ -13,14 +13,14 @@ const getTotalYield = (cropsObj) => {
 
 // calculate the cost of a crop (e.g. crop of corn, so only of one sepecies)
 const getCostsForCrop = (cropsObj) => {
-    const singleCropObj = cropsObj.crops[0] //getting one crop object
-    const costPlant = cropsObj.crops[0].crop.cost; // cost of one plant species
-    return costPlant * getYieldForCrop(singleCropObj);
+    let costsForCrop = 0;
+    cropsObj.crops.forEach(obj => costsForCrop += obj.crop.cost * getYieldForCrop(obj)); 
+    return costsForCrop;
 }
 const getRevenueForCrop = (cropsObj) => {
-    const singleCropObj = cropsObj.crops[0] //getting one crop object
-    const salePrice = cropsObj.crops[0].crop.salePrice; // salePrice of one plant species
-    return salePrice * getYieldForCrop(singleCropObj);
+    let revenueForCrop = 0;
+    cropsObj.crops.forEach(obj => revenueForCrop += obj.crop.salePrice * getYieldForCrop(obj)); 
+    return revenueForCrop;
 };
 
 const getProfitForCrop = (cropsObj) =>{
@@ -30,6 +30,14 @@ const getProfitForCrop = (cropsObj) =>{
     return profitForCrop < 0 ? 0 : profitForCrop;
 }
 
+const getTotalProfit = (cropsObj) =>{
+    // loop through all crop species:
+    // log(cropsObj.crops)
+    // cropsObj.crops.forEach(obj => {
+
+    // }) 
+    // get revenue and cost of eacht crop species
+}
 
 module.exports = {
     getYieldForPlant,
@@ -38,4 +46,5 @@ module.exports = {
     getCostsForCrop,
     getRevenueForCrop,
     getProfitForCrop,
+    getTotalProfit,
 }
