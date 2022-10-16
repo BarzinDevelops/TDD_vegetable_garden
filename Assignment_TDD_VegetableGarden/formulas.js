@@ -47,3 +47,25 @@
     // log('total profit pumpkin = revenue - costs ->',((1.65 * 8)-( 1 * 8)).toFixed(2))
     // log('total profit carrot = revenue - costs ->',(0.75 * 15)-(0.40 * 15))
     // log('totalProfitAllCrops ->',totalProfitAllCrops)
+
+
+
+
+
+
+    /* 
+    
+    // get total revenue of all crop species
+    const totalCropsRevenue = getRevenueForCrop(cropsObj);
+    log(`totalCropsRevenue =>`,totalCropsRevenue );
+   
+    // get total costz of all crop species 
+    const totalCropsCost = getCostsForCrop(cropsObj);
+    log(`totalCropsCost =>`, totalCropsCost);
+
+    // get total profit of aal crop species:
+    const totalCropsProfit = totalCropsRevenue - totalCropsCost;
+    log(`totalCropsProfit =>`, totalCropsProfit);
+    
+    
+    */
