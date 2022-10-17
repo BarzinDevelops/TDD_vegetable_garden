@@ -2,7 +2,11 @@
 // testing purposes:
 const log = console.log;
 // ----------------------------------------------------------------------------//
+
 const getYieldForPlant = plant => plant.yield;
+
+
+
 const getYieldForCrop = (singleCropObj) => singleCropObj.crop.yield * singleCropObj.numCrops;
 
 const getTotalYield = (cropsObj) => {

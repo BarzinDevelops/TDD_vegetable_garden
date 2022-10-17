@@ -4,7 +4,7 @@ process.stdout.write("\u001b[3J\u001b[2J\u001b[1J");
 console.clear();
 // ----------------------------------------------------------------------------//
 
-
+// import { getYieldForCrop } from "./farm";
 
 const { getYieldForPlant, 
         getYieldForCrop, 
@@ -209,5 +209,34 @@ describe("getTotalProfit", ()=>{
     });
 });
 
+/* Implement the following functionalities by modifying your previously written functions.
+    So don't write new functions. Check within the function whether there are relevant environmental factors that have been passed to the function. */
 
 
+// 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
+//   "getYieldForPlant", use the following data structures:
+
+
+// formules:    if low -> yield + (yield * 50 / 100)
+//              if high ->  yield - (yield * 50 / 100)
+//              if medium -> yield (nothing changes)
+describe("getYieldForPlant", ()=>{
+    test(`Testing calculating the yield (in kilograms) of a plant (With environmental factors).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+            };
+            
+        const environmentFactors = {
+        sun: "low",
+        };
+        expect(getYieldForPlant(corn)).toBe(4.5);
+    });
+});
