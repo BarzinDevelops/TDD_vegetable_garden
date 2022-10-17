@@ -15,6 +15,7 @@ const { getYieldForPlant,
         getTotalProfit
 } = require("./farm");
 
+/* 
 describe("getYieldForPlant", () => {
     const corn = {
         name: "corn",
@@ -209,6 +210,10 @@ describe("getTotalProfit", ()=>{
     });
 });
 
+
+ */
+
+
 /* Implement the following functionalities by modifying your previously written functions.
     So don't write new functions. Check within the function whether there are relevant environmental factors that have been passed to the function. */
 
@@ -237,6 +242,7 @@ describe("getYieldForPlant", ()=>{
         const environmentFactors = {
         sun: "low",
         };
-        expect(getYieldForPlant(corn)).toBe(4.5);
+        const crops = { crop: corn, factors: environmentFactors }
+        expect(getYieldForPlant(crops)).toBe(4.5);
     });
 });

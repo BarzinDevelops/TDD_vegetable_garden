@@ -3,7 +3,30 @@
 const log = console.log;
 // ----------------------------------------------------------------------------//
 
-const getYieldForPlant = plant => plant.yield;
+// const getYieldForPlant = plant => plant.yield;
+const getYieldForPlant = (cropsObj) => {
+    log(`==============Getting the current yield value:===========================`);
+    const currentYield = cropsObj.crop.yield
+    log(currentYield);
+    log(`==============Getting all objects in crop factors object=============`); 
+    const cropFactors = cropsObj.crop.factor
+    log(cropFactors);
+    log(`==============Getting environmentFactors object===========================`);
+    const environmentFactors = cropsObj.factors
+    log(environmentFactors)
+    log(`=======looping cropFactors to find match in environment factors:=======`);
+    //  loop through crop factors and find matching environment factor and show
+    // value:
+    for(let factor in cropFactors){
+        if (factor in environmentFactors){
+            // log(`factor => ${factor}`)
+            log(`environmentFactors`, environmentFactors)
+            log(`Found: factor => ${factor} matches: environment Factor =>`,environmentFactors);
+            // 
+        }else log(`factor ${factor} not fount in environmentFactors `)
+    }
+
+}
 
 
 
