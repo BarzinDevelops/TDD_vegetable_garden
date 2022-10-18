@@ -240,7 +240,7 @@ describe("getYieldForPlant", ()=>{
             };
             
         const environmentFactors = {
-        sun: "low",
+        sun: "high",
         };
         const crops = { crop: corn, factors: environmentFactors }
         expect(getYieldForPlant(crops)).toBe(4.5);
