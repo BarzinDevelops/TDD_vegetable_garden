@@ -5,68 +5,54 @@ const log = console.log;
 
 // const getYieldForPlant = plant => plant.yield;
 const getYieldForPlant = (cropsObj) => {
-    log(`==============Getting the current yield value:===========================`);
+    log(` ========= Getting the current yield value: ========= `);
     let currentYield = cropsObj.crop.yield
-    log(`currentYield => ${currentYield} with type of: ${typeof currentYield}`);
-    log(`==============Getting all objects in crop factors object=============`); 
+    // log(`currentYield => ${currentYield} with type of: ${typeof currentYield}`);
+    log(` ========= Getting all objects in crop factors object ========= `); 
     const cropFactors = cropsObj.crop.factor
-    log(`cropFactors`, cropFactors);
-    log(`==============Getting environmentFactors object ================`);
+    // log(`cropFactors`, cropFactors);
+    log(` ========= Getting environmentFactors object ========= `);
     const environmentFactors = cropsObj.factors
-    log(environmentFactors)
-    log(`=======looping cropFactors to find match in environment factors:=======`);
-    //  loop through crop factors and find matching environment factor and show
-    // value:
-    // log(`is cropFactors array: `, Array.isArray(cropFactors))
-    // log(`is cropFactors object: `, typeof cropFactors === 'object')
-    // log(`wat is cropFactors dan: `, typeof cropFactors)
+    // log(environmentFactors)
+    log(` ===== looping cropFactors to find match in environment factors: ===== `);
     for(let factor in cropFactors){
-      
-        // log(`cropFactors[factor]: `, cropFactors[factor])
-        // log(`cropFactors[factor].low: `, cropFactors[factor].low)
-        // for(let item in cropFactors[factor])
-        //     if(item === 'low') log(`this must be ${item} and value is:`,cropFactors[factor][item] )
         if (factor in environmentFactors){
-            let environmentFactorsValue = environmentFactors[factor];
-            // log(`sun value in environment factor: ${environmentFactorsValue}`)
-            // log(`Object.entries(factor)`, Object.entries(factor))
-            for(let item in cropFactors[factor]){
-                if(item === environmentFactors[factor]) {
-                    // log(`this must be "${item}" and value is:`,cropFactors[factor][item] )
-                    // log(`item is ${item} of type: ${typeof item}`)
+            // log(`**is ${factor} in environmentFactors? => ${factor in environmentFactors}`)
+            // log(`## cropFactors[factor] is "${factor}" and it contains: =>\n`,cropFactors[factor]) 
+            for(let item in cropFactors[factor]){    
+                // log(`## is item ->"${item}" in "${factor}" same as environmentFactors wind item "${environmentFactors[factor]}"->  `, (item === environmentFactors[factor]))                
+                // log(`## environmentFactors[factor] => ${environmentFactors[factor]}`)
+                if(item === environmentFactors[factor]) {                        
+                    log(`========CALCULATIONS ==============`);
                     const cropsFactorValue = cropFactors[factor][item];
-                    // log(`cropsFactorValue => ${cropsFactorValue} with type: ${typeof cropsFactorValue}`)
-                    switch(item){
-                        case "low":
-                            // currentYield += (currentYield * cropsFactorValue / 100)
-                            log(`currentYield was => ${currentYield}`);
-                            log(`cropsFactorValue was => ${cropsFactorValue}`);
-                            currentYield -= (-currentYield * cropsFactorValue / 100)
-                            log(`currentYield is now => ${currentYield}`);
-                            break;
-                        case "high":
-                            // currentYield += (currentYield * cropsFactorValue / 100)
-                            log(`currentYield was => ${currentYield}`);
-                            log(`cropsFactorValue was => ${cropsFactorValue}`);
-                            currentYield += (currentYield * cropsFactorValue / 100)
-                            log(`currentYield is now => ${currentYield}`);
-                            break;
-                        case "medium":
-                            // currentYield += (currentYield * cropsFactorValue / 100)
-                            log(`currentYield was => ${currentYield}`);
-                            log(`cropsFactorValue was => ${cropsFactorValue}`);
-                            // currentYield += (currentYield * cropsFactorValue / 100)
-                            log(`currentYield is now => ${currentYield}`);
-                            break;
-                    }
-                    
-                }
-            }
+                    // log(`is this ${item} value?`,cropsFactorValue);
 
-            
-        }else log(`factor ${factor} not fount in environmentFactors `)
+                    if(cropsFactorValue > 0){
+                        log(`========case ${item} ==============`);
+                        log(`cropsFactorValue (${cropsFactorValue}) > 0  => `,cropsFactorValue > 0)
+                        log(`currentYield before calc: (${currentYield})`)
+                        currentYield += (currentYield * cropsFactorValue / 100);
+                        log(`currentYield after calc: (${currentYield})`)
+                    }
+                    if(cropsFactorValue === 0){
+                        log(`========case ${item} ==============`);
+                        log(`cropsFactorValue (${cropsFactorValue}) === 0  => `,cropsFactorValue === 0)
+                        log(`currentYield before calc: (${currentYield})`)
+                        log(`currentYield after calc: (${currentYield})`)
+                    }
+                    if(cropsFactorValue < 0){
+                        log(`========case ${item} ==============`);
+                        log(`cropsFactorValue (${cropsFactorValue}) < 0  => `,cropsFactorValue < 0)
+                        log(`currentYield before calc: (${currentYield})`)
+                        currentYield -= (-currentYield * cropsFactorValue / 100);
+                        log(`currentYield after calc: (${currentYield})`)
+                    }                        
+                }
+            }          
+        }
+        // else log(`factor ${factor} not fount in environmentFactors `)
     }
-    return currentYield;
+    return parseFloat(currentYield.toFixed(2));
 }
 
 

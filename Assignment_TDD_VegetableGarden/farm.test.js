@@ -217,16 +217,12 @@ describe("getTotalProfit", ()=>{
 /* Implement the following functionalities by modifying your previously written functions.
     So don't write new functions. Check within the function whether there are relevant environmental factors that have been passed to the function. */
 
-
-// 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
-//   "getYieldForPlant", use the following data structures:
-
-
 // formules:    if low -> yield + (yield * 50 / 100)
 //              if high ->  yield - (yield * 50 / 100)
 //              if medium -> yield (nothing changes)
 describe("getYieldForPlant", ()=>{
-    test(`Testing calculating the yield (in kilograms) of a plant (With environmental factors).`, ()=>{
+    // 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
+    test(`1. Testing calculating the yield (in kilograms) of a plant (With ONE environmental factors).`, ()=>{
         const corn = {
             name: "corn",
             yield: 3,
@@ -237,12 +233,41 @@ describe("getYieldForPlant", ()=>{
                 high: 50,
                 },
             },
-            };
+        };
             
         const environmentFactors = {
         sun: "high",
         };
         const crops = { crop: corn, factors: environmentFactors }
-        expect(getYieldForPlant(crops)).toBe(4.5);
+        expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
+    });
+
+    // 2.  calculating the yield (in kilograms) of a plant with multiple     
+    //     environmental factors.: 
+    test(`2. Testing calculating the yield (in kilograms) of a plant (With multiple environmental factors).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium",
+        };
+        const crops = { crop: corn, factors: environmentFactors }
+        // expect(getYieldForPlant(crops)).toBe(2.1); //Only if wind: "medium"
+        expect(getYieldForPlant(crops)).toBe(3.15);//Only if sun: "high" and wind: "medium"
     });
 });
