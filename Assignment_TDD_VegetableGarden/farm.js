@@ -28,12 +28,6 @@ const getYieldForPlant = (cropsObj) => {
                         currentYield += (currentYield * cropsFactorValue / 100);
                         // log(`currentYield after calc: (${currentYield})`)
                     }
-                    if(cropsFactorValue === 0){
-                        // log(`========case ${item} ==============`);
-                        // log(`cropsFactorValue (${cropsFactorValue}) === 0  => `,cropsFactorValue === 0)
-                        // log(`currentYield before calc: (${currentYield})`)
-                        // log(`currentYield after calc: (${currentYield})`)
-                    }
                     if(cropsFactorValue < 0){
                         // log(`========case ${item} ==============`);
                         // log(`cropsFactorValue (${cropsFactorValue}) < 0  => `,cropsFactorValue < 0)
@@ -55,7 +49,20 @@ const getYieldForCrop = (singleCropObj) => getYieldForPlant(singleCropObj) * sin
 
 const getTotalYield = (cropsObj) => {
     let totalCrops = 0;
-    cropsObj.crops.forEach(obj => totalCrops += obj.crop.yield * obj.numCrops);
+    // log(`cropsObj.crops => `,cropsObj.crops);
+
+    cropsObj.crops.forEach(obj =>{
+        if(obj.factors){
+            totalCrops += getYieldForCrop(obj);
+            // log(`=============================================================`)
+            // log(`getYieldForCrop(obj)`, getYieldForCrop(obj))
+            // log(`totalCrops(obj)`,totalCrops)
+        } else {
+            totalCrops += obj.crop.yield * obj.numCrops;
+        }
+
+    }); 
+
     return totalCrops;
 }
 
