@@ -220,27 +220,27 @@ describe("getTotalProfit", ()=>{
 // formules:    if low -> yield + (yield * 50 / 100)
 //              if high ->  yield - (yield * 50 / 100)
 //              if medium -> yield (nothing changes)
-describe("getYieldForPlant", ()=>{
+describe("getYieldForPlant with Environmental factors", ()=>{
     // 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
-    // test(`1. Testing calculating the yield (in kilograms) of a plant (With SINGLE environmental factor).`, ()=>{
-    //     const corn = {
-    //         name: "corn",
-    //         yield: 3,
-    //         factor: {
-    //             sun: {
-    //             low: -50,
-    //             medium: 0,
-    //             high: 50,
-    //             },
-    //         },
-    //     };
+    test(`1. Testing calculating the yield (in kilograms) of a plant (With SINGLE environmental factor).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };
             
-    //     const environmentFactors = {
-    //     sun: "high",
-    //     };
-    //     const crops = { crop: corn, factors: environmentFactors }
-    //     expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
-    // });
+        const environmentFactors = {
+        sun: "high",
+        };
+        const crops = { crop: corn, factors: environmentFactors }
+        expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
+    });
 
     // 2.  calculating the yield (in kilograms) of a plant with multiple     
     //     environmental factors.: 
@@ -269,5 +269,35 @@ describe("getYieldForPlant", ()=>{
         const crops = { crop: corn, factors: environmentFactors }
         // expect(getYieldForPlant(crops)).toBe(2.1); //Only if wind: "medium"
         expect(getYieldForPlant(crops)).toBe(3.15);//Only if sun: "high" and wind: "medium"
+    });
+});
+
+// 4.  Test getYieldForCrop -> for calculating the yield for crop, include environmental  
+//      factors.
+describe("4. getYieldForCrop with Environmental factors", () => {
+    test(`4A. Get getYieldForCrop (With SINGLE environmental factor).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+        sun: "high",
+        };
+
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+
+        expect(getYieldForCrop(input)).toBe(45);
+
     });
 });
