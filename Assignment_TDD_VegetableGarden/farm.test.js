@@ -294,10 +294,50 @@ describe("4. getYieldForCrop with Environmental factors", () => {
 
         const input = {
             crop: corn,
+            factors: environmentFactors,
             numCrops: 10,
         };
 
         expect(getYieldForCrop(input)).toBe(45);
 
     });
+
+    test(`4B. Get getYieldForCrop (With MULTIPLE environmental factors).`, ()=>{
+
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium",
+        };
+
+        const input = {
+            crop: corn,
+            factors: environmentFactors,
+            numCrops: 10,
+        };
+
+        //  the yield should be 3.15 with sun: "high" and wind: "medium"
+        // so the crop should be:  3.15 * numCrops(10) = 31.5
+        expect(getYieldForCrop(input)).toBe(31.5);
+
+    });
 });
+
+
+

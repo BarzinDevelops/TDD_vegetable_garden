@@ -51,7 +51,7 @@ const getYieldForPlant = (cropsObj) => {
 
 
 
-const getYieldForCrop = (singleCropObj) => singleCropObj.crop.yield * singleCropObj.numCrops;
+const getYieldForCrop = (singleCropObj) => getYieldForPlant(singleCropObj) * singleCropObj.numCrops;
 
 const getTotalYield = (cropsObj) => {
     let totalCrops = 0;
