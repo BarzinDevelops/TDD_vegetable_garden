@@ -85,16 +85,6 @@ const getRevenueForCrop = (cropsObj) => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
 const getProfitForCrop = (cropsObj) =>{
     const profitForCrop = getRevenueForCrop(cropsObj) - getCostsForCrop(cropsObj);
     return profitForCrop < 0 ? 0 : parseFloat(profitForCrop.toFixed(2));

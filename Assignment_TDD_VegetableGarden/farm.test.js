@@ -500,3 +500,87 @@ describe("6. getRevenueForCrop with Environmental factors", () => {
     });
 
 });
+
+
+
+
+
+// 7.  Test getTotalYield -> for calculating the total yield of multiple crops,
+//  include environmental factors.
+describe("6. getProfitForCrop with Environmental factors", () => {
+    test(`6A. Calculate the profit of a crop (With SINGLE environmental factor).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            cost: 0.80,
+            salePrice: 1.10,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };            
+        const environmentFactors = {
+        sun: "high",
+        };
+
+        const crops = [
+            { crop: corn, factors: environmentFactors, numCrops: 5 },
+        ];
+
+        /* corn -> will be 4.5 (with sun high) and pumpking -> will be 6
+           corn total yield => 4.5 * 5 =  22.5
+            total revenue corn => 22.5  * 1.10 =  24.75
+            total cost corn => 0.80 * 22.50 = 18
+            total profit corn => 24.75 - 18 = 6.75
+        */
+        expect(getProfitForCrop({ crops })).toBe(6.75);
+
+    });
+    test(`6B. Calculate the profit of a crop (With MULTIPLE environmental factors).`, ()=>{
+
+        const corn = {
+            name: "corn",
+            yield: 3,
+            cost: 0.80,
+            salePrice: 1.10,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium",
+        };
+
+        const crops = [
+            { crop: corn, factors: environmentFactors, numCrops: 10 },
+        ];
+        
+        /* 
+            the yield should be 3.15 with sun: "high" and wind: "medium"
+            so the crop should be:  3.15 * numCrops(10) = 31.5
+            -------------------------------------------------------
+            corn yield-> will be 3.15 (with sun: "high" and wind: "medium")
+            corn total yield => 3.15 * numCrops(10) = 31.5
+            total revenue corn => 31.5  * 1.10 = 34,65
+            total cost corn => 0.80 * 31.5 = 25,2
+            total profit corn => 34,65- 25,2 = 6.3
+         */
+        expect(getProfitForCrop({ crops })).toBe(9.45);
+
+    });
+
+});
