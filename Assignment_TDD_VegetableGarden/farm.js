@@ -47,6 +47,7 @@ const getYieldForPlant = (cropsObj) => {
 
 const getYieldForCrop = (singleCropObj) => getYieldForPlant(singleCropObj) * singleCropObj.numCrops;
 
+
 const getTotalYield = (cropsObj) => {
     let totalCrops = 0;
     // log(`cropsObj.crops => `,cropsObj.crops);
@@ -73,12 +74,26 @@ const getCostsForCrop = (cropsObj) => {
     return  costsForCrop;
 }
 
+
+
+
 // calculate the revenue of a crop (e.g. crop of corn, so only of one sepecies)
 const getRevenueForCrop = (cropsObj) => {
     let revenueForCrop = 0;
-    cropsObj.crops.forEach(obj => revenueForCrop += obj.crop.salePrice * getYieldForCrop(obj));  
-    return revenueForCrop;
+    cropsObj.crops.forEach(obj => revenueForCrop += obj.crop.salePrice * getYieldForCrop(obj));
+    return parseFloat(revenueForCrop.toFixed(2));
 };
+
+
+
+
+
+
+
+
+
+
+
 
 const getProfitForCrop = (cropsObj) =>{
     const profitForCrop = getRevenueForCrop(cropsObj) - getCostsForCrop(cropsObj);

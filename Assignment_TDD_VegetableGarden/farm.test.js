@@ -428,7 +428,7 @@ describe("5. getTotalYield with Environmental factors", () => {
 // 6.  Test getTotalYield -> for calculating the total yield of multiple crops,
 //  include environmental factors.
 describe("6. getRevenueForCrop with Environmental factors", () => {
-    test(`6A. calculate the income (Revenue) of a crop (With SINGLE environmental factor).`, ()=>{
+    test(`6A. Calculate the income (Revenue) of a crop (With SINGLE environmental factor).`, ()=>{
         const corn = {
             name: "corn",
             yield: 3,
@@ -453,44 +453,50 @@ describe("6. getRevenueForCrop with Environmental factors", () => {
         /* corn -> will be 4.5 (with sun high) and pumpking -> will be 6
            corn total yield => 4.5 * 5 =  22.5
             total revenue corn => 22.5  * 1.10 =  24.75
-           pumpkin total yield => 6 * 2 = 12 */
+        */
         expect(getRevenueForCrop({ crops })).toBe(24.75);
 
     });
-    // test(`6B. calculate the income of a crop (With MULTIPLE environmental factors).`, ()=>{
+    test(`6B. Calculate the income (Revenue) of a crop (With MULTIPLE environmental factors).`, ()=>{
 
-    //     const corn = {
-    //         name: "corn",
-    //         yield: 3,
-    //         factor: {
-    //             sun: {
-    //                 low: -50,
-    //                 medium: 0,
-    //                 high: 50,
-    //             },
-    //             wind: {
-    //                 lots: -60,
-    //                 medium: -30,
-    //                 little: 100,
-    //             },
-    //         },
-    //     };
+        const corn = {
+            name: "corn",
+            yield: 3,
+            cost: 0.80,
+            salePrice: 1.10,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };
             
-    //     const environmentFactors = {
-    //         sun: "high",
-    //         wind: "medium",
-    //     };
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium",
+        };
 
-    //     const input = {
-    //         crop: corn,
-    //         factors: environmentFactors,
-    //         numCrops: 10,
-    //     };
+        const crops = [
+            { crop: corn, factors: environmentFactors, numCrops: 10 },
+        ];
+        
+        /* 
+            the yield should be 3.15 with sun: "high" and wind: "medium"
+            so the crop should be:  3.15 * numCrops(10) = 31.5
+            -------------------------------------------------------
+            corn -> will be 3.15 (with sun: "high" and wind: "medium")
+            corn total yield => 3.15 * numCrops(10) = 31.5
+            total revenue corn => 31.5  * 1.10 = 34,65
+         */
+        expect(getRevenueForCrop({ crops })).toBe(34.65);
 
-    //     //  the yield should be 3.15 with sun: "high" and wind: "medium"
-    //     // so the crop should be:  3.15 * numCrops(10) = 31.5
-    //     expect(getYieldForCrop(input)).toBe(31.5);
-
-    // });
+    });
 
 });
