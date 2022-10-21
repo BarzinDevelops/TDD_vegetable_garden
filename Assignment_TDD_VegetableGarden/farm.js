@@ -22,24 +22,24 @@ const getYieldForPlant = (cropsObj) => {
                 if(item === environmentFactors[factor]) {                                            
                     const cropsFactorValue = cropFactors[factor][item];
                     if(cropsFactorValue > 0){
-                        log(`========case ${item} ==============`);
-                        log(`cropsFactorValue (${cropsFactorValue}) > 0  => `,cropsFactorValue > 0)
-                        log(`currentYield before calc: (${currentYield})`)
+                        // log(`========case ${item} ==============`);
+                        // log(`cropsFactorValue (${cropsFactorValue}) > 0  => `,cropsFactorValue > 0)
+                        // log(`currentYield before calc: (${currentYield})`)
                         currentYield += (currentYield * cropsFactorValue / 100);
-                        log(`currentYield after calc: (${currentYield})`)
+                        // log(`currentYield after calc: (${currentYield})`)
                     }
                     if(cropsFactorValue === 0){
-                        log(`========case ${item} ==============`);
-                        log(`cropsFactorValue (${cropsFactorValue}) === 0  => `,cropsFactorValue === 0)
-                        log(`currentYield before calc: (${currentYield})`)
-                        log(`currentYield after calc: (${currentYield})`)
+                        // log(`========case ${item} ==============`);
+                        // log(`cropsFactorValue (${cropsFactorValue}) === 0  => `,cropsFactorValue === 0)
+                        // log(`currentYield before calc: (${currentYield})`)
+                        // log(`currentYield after calc: (${currentYield})`)
                     }
                     if(cropsFactorValue < 0){
-                        log(`========case ${item} ==============`);
-                        log(`cropsFactorValue (${cropsFactorValue}) < 0  => `,cropsFactorValue < 0)
-                        log(`currentYield before calc: (${currentYield})`)
+                        // log(`========case ${item} ==============`);
+                        // log(`cropsFactorValue (${cropsFactorValue}) < 0  => `,cropsFactorValue < 0)
+                        // log(`currentYield before calc: (${currentYield})`)
                         currentYield -= (-currentYield * cropsFactorValue / 100);
-                        log(`currentYield after calc: (${currentYield})`)
+                        // log(`currentYield after calc: (${currentYield})`)
                     }                        
                 }
             }          

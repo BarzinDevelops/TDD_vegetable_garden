@@ -341,3 +341,48 @@ describe("4. getYieldForCrop with Environmental factors", () => {
 
 
 
+
+// 5.  Test getTotalYield -> for calculating the total yield of multiple crops,
+//  include environmental factors.
+describe("5. getTotalYield with Environmental factors", () => {
+    test(`5A. Test to get the total yield of multiple crops (With SINGLE environmental factor).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 4,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+        sun: "high",
+        };
+
+        const crops = [
+            { crop: corn, factors: environmentFactors, numCrops: 5 },
+            { crop: pumpkin, factors: environmentFactors, numCrops: 2 },
+        ];
+
+        /* corn -> will be 4.5 (with sun high) and pumpking -> will be 6
+        which makes a total of 10.5 */
+        expect(getTotalYield({ crops })).toBe(10.5);
+
+    });
+
+
+});
