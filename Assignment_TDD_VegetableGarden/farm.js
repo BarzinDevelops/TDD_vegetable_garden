@@ -5,28 +5,22 @@ const log = console.log;
 
 // const getYieldForPlant = plant => plant.yield;
 const getYieldForPlant = (cropsObj) => {
-    log(` ========= Getting the current yield value: ========= `);
-    let currentYield = cropsObj.crop.yield
-    // log(`currentYield => ${currentYield} with type of: ${typeof currentYield}`);
-    log(` ========= Getting all objects in crop factors object ========= `); 
-    const cropFactors = cropsObj.crop.factor
-    // log(`cropFactors`, cropFactors);
-    log(` ========= Getting environmentFactors object ========= `);
-    const environmentFactors = cropsObj.factors
-    // log(environmentFactors)
-    log(` ===== looping cropFactors to find match in environment factors: ===== `);
+    //Only return Yield if the object received contains no Environmental factors.
+    if(cropsObj.yield) return cropsObj.yield;
+   
+    // ============== CALCULATIONS when Environmental factors received: ==============
+     // Getting the current yield value:
+     let currentYield = cropsObj.crop.yield
+     // Getting all objects in crop factors object 
+     const cropFactors = cropsObj.crop.factor
+     // Getting environmentFactors object
+     const environmentFactors = cropsObj.factors
+     // looping cropFactors to find match in environment factors
     for(let factor in cropFactors){
-        if (factor in environmentFactors){
-            // log(`**is ${factor} in environmentFactors? => ${factor in environmentFactors}`)
-            // log(`## cropFactors[factor] is "${factor}" and it contains: =>\n`,cropFactors[factor]) 
+        if (factor in environmentFactors){ 
             for(let item in cropFactors[factor]){    
-                // log(`## is item ->"${item}" in "${factor}" same as environmentFactors wind item "${environmentFactors[factor]}"->  `, (item === environmentFactors[factor]))                
-                // log(`## environmentFactors[factor] => ${environmentFactors[factor]}`)
-                if(item === environmentFactors[factor]) {                        
-                    log(`========CALCULATIONS ==============`);
+                if(item === environmentFactors[factor]) {                                            
                     const cropsFactorValue = cropFactors[factor][item];
-                    // log(`is this ${item} value?`,cropsFactorValue);
-
                     if(cropsFactorValue > 0){
                         log(`========case ${item} ==============`);
                         log(`cropsFactorValue (${cropsFactorValue}) > 0  => `,cropsFactorValue > 0)
@@ -50,8 +44,8 @@ const getYieldForPlant = (cropsObj) => {
                 }
             }          
         }
-        // else log(`factor ${factor} not fount in environmentFactors `)
     }
+    
     return parseFloat(currentYield.toFixed(2));
 }
 

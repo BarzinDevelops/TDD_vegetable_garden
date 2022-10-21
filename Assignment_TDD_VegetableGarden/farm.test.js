@@ -15,7 +15,7 @@ const { getYieldForPlant,
         getTotalProfit
 } = require("./farm");
 
-/* 
+/*  */
 describe("getYieldForPlant", () => {
     const corn = {
         name: "corn",
@@ -211,7 +211,7 @@ describe("getTotalProfit", ()=>{
 });
 
 
- */
+
 
 
 /* Implement the following functionalities by modifying your previously written functions.
@@ -222,25 +222,25 @@ describe("getTotalProfit", ()=>{
 //              if medium -> yield (nothing changes)
 describe("getYieldForPlant", ()=>{
     // 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
-    test(`1. Testing calculating the yield (in kilograms) of a plant (With ONE environmental factors).`, ()=>{
-        const corn = {
-            name: "corn",
-            yield: 3,
-            factor: {
-                sun: {
-                low: -50,
-                medium: 0,
-                high: 50,
-                },
-            },
-        };
+    // test(`1. Testing calculating the yield (in kilograms) of a plant (With SINGLE environmental factor).`, ()=>{
+    //     const corn = {
+    //         name: "corn",
+    //         yield: 3,
+    //         factor: {
+    //             sun: {
+    //             low: -50,
+    //             medium: 0,
+    //             high: 50,
+    //             },
+    //         },
+    //     };
             
-        const environmentFactors = {
-        sun: "high",
-        };
-        const crops = { crop: corn, factors: environmentFactors }
-        expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
-    });
+    //     const environmentFactors = {
+    //     sun: "high",
+    //     };
+    //     const crops = { crop: corn, factors: environmentFactors }
+    //     expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
+    // });
 
     // 2.  calculating the yield (in kilograms) of a plant with multiple     
     //     environmental factors.: 
