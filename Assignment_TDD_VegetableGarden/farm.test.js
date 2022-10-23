@@ -211,24 +211,21 @@ describe("getTotalProfit", ()=>{
 });
 
 
-// #################################################################################################
-    /* 
-        Implement the following functionalities by modifying your previously written functions.
-        So don't write new functions. 
-        Check within the function whether there are relevant environmental factors that 
-        have been passed to the function. 
-    */
-// #################################################################################################
+/* ##############################--WITH ENVIRONMENTAL FACTORS--####################################
+    
+        // Implement the following functionalities by modifying your previously written functions.
+        // So don't write new functions. 
+        // Check within the function whether there are relevant environmental factors that 
+        // have been passed to the function. 
+   
+ ################################################################################################# */
 
-
-
-
+// 1. Test getYieldForPlant -> including SINGLE environmental factor.
 // formules:    if high -> yield + (yield * 50 / 100)
 //              if low ->  yield - (-yield * 50 / 100)
 //              if medium -> yield (nothing changes)
-describe("getYieldForPlant with Environmental factors", ()=>{
-    // 1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function:        
-    test(`1. Testing calculating the yield (in kilograms) of a plant (With SINGLE environmental factor).`, ()=>{
+describe("1. getYieldForPlant (with ONE Environmental factor)", ()=>{
+    test(`1A. Calculating the yield (in kilograms) of a plant (With SINGLE environmental factor).`, ()=>{
         const corn = {
             name: "corn",
             yield: 3,
@@ -247,10 +244,14 @@ describe("getYieldForPlant with Environmental factors", ()=>{
         const crops = { crop: corn, factors: environmentFactors }
         expect(getYieldForPlant(crops)).toBe(4.5); //Only if sun: "high"
     });
+});
 
-    // 2.  calculating the yield (in kilograms) of a plant with multiple     
-    //     environmental factors.: 
-    test(`2. Testing calculating the yield (in kilograms) of a plant (With multiple environmental factors).`, ()=>{
+// 2. Test getYieldForPlant -> including MULTIPLE environmental factors.
+// formules:    if high -> yield + (yield * 50 / 100)
+//              if low ->  yield - (-yield * 50 / 100)
+//              if medium -> yield (nothing changes)
+describe("2. getYieldForPlant (with ONE Environmental factor)", ()=>{    
+    test(`2A. Calculating the yield (in kilograms) of a plant (With MULTIPLE environmental factors).`, ()=>{
         const corn = {
             name: "corn",
             yield: 3,
@@ -273,9 +274,45 @@ describe("getYieldForPlant with Environmental factors", ()=>{
             wind: "medium",
         };
         const crops = { crop: corn, factors: environmentFactors }
-        // expect(getYieldForPlant(crops)).toBe(2.1); //Only if wind: "medium"
         expect(getYieldForPlant(crops)).toBe(3.15);//Only if sun: "high" and wind: "medium"
+    }); 
+});
+
+
+
+// 3. Test getYieldForCrop -> Ignore irrelevant environmental factors in your calculations.
+// formules:    if high -> yield + (yield * 50 / 100)
+//              if low ->  yield - (-yield * 50 / 100)
+//              if medium -> yield (nothing changes)
+describe("3. getYieldForCrop only with relevant environmental factors", () => {
+    test(`3A. Testing getYieldForCrop (With one IRRELEVANT environmental factor).`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+            sun: "high",
+            wind: "wind",
+        };
+
+        const input = {
+            crop: corn,
+            factors: environmentFactors,
+            numCrops: 10,
+        };
+        //  environmental factor (wind: "high") shouldn't change the yield (=45) for this plant (corn)!
+        expect(getYieldForCrop(input)).toBe(45);
+
     });
+
 });
 
 // 4.  Test getYieldForCrop -> for calculating the yield for crop, include environmental  
@@ -666,6 +703,73 @@ describe("8. getTotalProfit with Environmental factors", () => {
 
     });
     test(`8B. Calculate profit for multiple crops (With MULTIPLE environmental factors).`, ()=>
+    {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            cost: 0.80,
+            salePrice: 1.10,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };            
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 4,
+            cost: 1.00,
+            salePrice: 1.65,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };           
+        const environmentFactors = {
+        sun: "high",
+        wind: "medium",
+        };
+
+        const crops = [
+            { crop: corn, factors: environmentFactors, numCrops: 5 },
+            { crop: pumpkin, factors: environmentFactors, numCrops: 10 },
+        ];
+        
+        /* 
+        corn yield plant -> will be 3.15 with (sun: "high" and wind: "medium")
+            corn total yield (yield plant * numCrops) => 3.15 * 5 =  15.75
+            total revenue corn (total yield * saleprice plant) => 15.75  * 1.10 =  17.325
+            total cost corn (total yield * cost plant) => 15.75 * 0.80 = 12.6
+            total profit corn (total revenue - total cost) => 17.325 - 12.6 = 4.725
+            -----------------------------------------------------
+        /* pumpkin yield plant-> will be 4.2 (sun: "high" and wind: "medium")
+            pumpkin total yield (yield plant * numCrops) => 4.2 * 10 =  42
+            total revenue pumpkin (total yield * saleprice plant)=> 42  * 1.65 =  69.3
+            total cost pumpkin (total yield * cost plant) => 42 * 1.00 = 42.00
+            total profit pumpkin (total revenue - total cost) => 69.3 - 42 = 27.3
+            -------------------------------------------------------
+            total profit all crops:  
+                4.725 (total profit corn) + 27.3 (total profit pumpkin) = 32.025 (= 32.03)
+         */
+        expect(getTotalProfit({ crops })).toBe(32.03);
+
+    });
+    test(`Testing If the the factor that doesn't apply to a plant, gets ignored for that plant.`, ()=>
     {
         const corn = {
             name: "corn",
