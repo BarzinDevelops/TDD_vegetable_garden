@@ -313,6 +313,59 @@ describe("3. getYieldForCrop only with relevant environmental factors", () => {
 
     });
 
+    test(`3B. Testing getYieldForCrop with more plants and With more IRRELEVANT environmental factors.`, ()=>{
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+            },
+        };
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 4,
+            factor: {
+                sun: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        };
+            
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium",
+        };
+
+        const input1 = {
+            crop: corn,
+            factors: environmentFactors,
+            numCrops: 10,
+        };
+        const input2 = {
+            crop: pumpkin,
+            factors: environmentFactors,
+            numCrops: 10,
+        };
+        //  environmental factor (wind: "medium") => shouldn't change the yield (=45) for corn     
+        //                                           but should effect  yield of pumpkin (= )!
+        expect(getYieldForCrop(input1)).toBe(45);
+        /*  pumpkin yield plant-> will be 4.2 when (sun: "high" and wind: "medium")
+            pumpkin total yield (yield plant * numCrops) => 4.2 * 10 =  42 */
+        expect(getYieldForCrop(input2)).toBe(42);
+
+    });
+
 });
 
 // 4.  Test getYieldForCrop -> for calculating the yield for crop, include environmental  
@@ -384,8 +437,6 @@ describe("4. getYieldForCrop with Environmental factors", () => {
 
     });
 });
-
-
 
 
 // 5.  Test getTotalYield -> for calculating the total yield of multiple crops,
@@ -472,8 +523,6 @@ describe("5. getTotalYield with Environmental factors", () => {
 });
 
 
-
-
 // 6.  Test getTotalYield -> for calculating the total yield of multiple crops,
 //  include environmental factors.
 // formules:    if high -> yield + (yield * 50 / 100)
@@ -552,9 +601,6 @@ describe("6. getRevenueForCrop with Environmental factors", () => {
     });
 
 });
-
-
-
 
 
 // 7.  Test getTotalYield -> for calculating the total yield of multiple crops,
@@ -638,8 +684,6 @@ describe("7. getProfitForCrop with Environmental factors", () => {
 
     });
 });
-
-
 
 
 // 8.  Test getTotalProfit -> for calculate the profit for multiple crops,
