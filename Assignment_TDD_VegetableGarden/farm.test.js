@@ -1,10 +1,8 @@
-const log = console.log // own preference for short command of console.log()
-//this also stops someone scrolling back and viewing sensitive data that may have been logged
+const log = console.log 
+//clean console screen after each test:
 process.stdout.write("\u001b[3J\u001b[2J\u001b[1J");
 console.clear();
-// ----------------------------------------------------------------------------//
-
-// import { getYieldForCrop } from "./farm";
+// -----------------------------ABOVE is Personal preference!!----------------------------------//
 
 const { getYieldForPlant, 
         getYieldForCrop, 
@@ -278,8 +276,6 @@ describe("2. getYieldForPlant (with ONE Environmental factor)", ()=>{
     }); 
 });
 
-
-
 // 3. Test getYieldForCrop -> Ignore irrelevant environmental factors in your calculations.
 // formules:    if high -> yield + (yield * 50 / 100)
 //              if low ->  yield - (-yield * 50 / 100)
@@ -438,7 +434,6 @@ describe("4. getYieldForCrop with Environmental factors", () => {
     });
 });
 
-
 // 5.  Test getTotalYield -> for calculating the total yield of multiple crops,
 //  include environmental factors.
 // formules:    if high -> yield + (yield * 50 / 100)
@@ -522,7 +517,6 @@ describe("5. getTotalYield with Environmental factors", () => {
 
 });
 
-
 // 6.  Test getTotalYield -> for calculating the total yield of multiple crops,
 //  include environmental factors.
 // formules:    if high -> yield + (yield * 50 / 100)
@@ -601,7 +595,6 @@ describe("6. getRevenueForCrop with Environmental factors", () => {
     });
 
 });
-
 
 // 7.  Test getTotalYield -> for calculating the total yield of multiple crops,
 //  include environmental factors.
@@ -684,7 +677,6 @@ describe("7. getProfitForCrop with Environmental factors", () => {
 
     });
 });
-
 
 // 8.  Test getTotalProfit -> for calculate the profit for multiple crops,
 //  including environmental factors.

@@ -1,9 +1,6 @@
-
-// testing purposes:
 const log = console.log;
-// ----------------------------------------------------------------------------//
+// ----------ABOVE is Personal preference!!-----------//
 
-// const getYieldForPlant = plant => plant.yield;
 const getYieldForPlant = (cropsObj) => {
     //Only return Yield if the object received contains no Environmental factors.
     if(cropsObj.yield) return cropsObj.yield;
@@ -22,18 +19,10 @@ const getYieldForPlant = (cropsObj) => {
                 if(item === environmentFactors[factor]) {                                            
                     const cropsFactorValue = cropFactors[factor][item];
                     if(cropsFactorValue > 0){
-                        // log(`========case ${item} ==============`);
-                        // log(`cropsFactorValue (${cropsFactorValue}) > 0  => `,cropsFactorValue > 0)
-                        // log(`currentYield before calc: (${currentYield})`)
                         currentYield += (currentYield * cropsFactorValue / 100);
-                        // log(`currentYield after calc: (${currentYield})`)
                     }
                     if(cropsFactorValue < 0){
-                        // log(`========case ${item} ==============`);
-                        // log(`cropsFactorValue (${cropsFactorValue}) < 0  => `,cropsFactorValue < 0)
-                        // log(`currentYield before calc: (${currentYield})`)
                         currentYield -= (-currentYield * cropsFactorValue / 100);
-                        // log(`currentYield after calc: (${currentYield})`)
                     }                        
                 }
             }          
@@ -43,27 +32,15 @@ const getYieldForPlant = (cropsObj) => {
     return parseFloat(currentYield.toFixed(2));
 }
 
-
-
+// calculate total yield of ONE plant based on crop amount:
 const getYieldForCrop = (singleCropObj) => getYieldForPlant(singleCropObj) * singleCropObj.numCrops;
 
-
+// calculate a total yield of all plants (which is sum of total yield of each plant)
 const getTotalYield = (cropsObj) => {
     let totalCrops = 0;
-    // log(`cropsObj.crops => `,cropsObj.crops);
-
-    cropsObj.crops.forEach(obj =>{
-        if(obj.factors){
-            totalCrops += getYieldForCrop(obj);
-            // log(`=============================================================`)
-            // log(`getYieldForCrop(obj)`, getYieldForCrop(obj))
-            // log(`totalCrops(obj)`,totalCrops)
-        } else {
-            totalCrops += obj.crop.yield * obj.numCrops;
-        }
-
-    }); 
-
+    cropsObj.crops.forEach(obj => obj.factors ?
+                                    totalCrops += getYieldForCrop(obj) : 
+                                    totalCrops += obj.crop.yield * obj.numCrops); 
     return totalCrops;
 }
 
@@ -74,9 +51,6 @@ const getCostsForCrop = (cropsObj) => {
     return  costsForCrop;
 }
 
-
-
-
 // calculate the revenue of a crop (e.g. crop of corn, so only of one sepecies)
 const getRevenueForCrop = (cropsObj) => {
     let revenueForCrop = 0;
@@ -84,12 +58,13 @@ const getRevenueForCrop = (cropsObj) => {
     return parseFloat(revenueForCrop.toFixed(2));
 };
 
-
+// calculate the profit of a crop (e.g. crop of corn, so only for one sepecies)
 const getProfitForCrop = (cropsObj) =>{
     const profitForCrop = getRevenueForCrop(cropsObj) - getCostsForCrop(cropsObj);
     return profitForCrop < 0 ? 0 : parseFloat(profitForCrop.toFixed(2));
 }
 
+// calculate the total profit of a all crops (so sum of profit of each plant sepecies in the cropsObj).
 const getTotalProfit = (cropsObj) =>{
     let totalProfit = 0;
     let crops = [];
